@@ -1,20 +1,20 @@
-# vtsimpclient.py
-# A vtsimpclient is an object that represents a connection to Discord
-# A vtsimpclient handles events, tracks state, and generally interacts with Discord APIs
+# vtsimp_client.py
+# A vtsimp_client.py is an object that represents a connection to Discord
+# A vtsimp_client.py handles events, tracks state, and generally interacts with Discord APIs
 
-import os
+import os # running python from the shell
 
-import discord
-from dotenv import load_dotenv
+import discord # aid for creating discord app
+from dotenv import load_dotenv # read key-value in .env as environment variables
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN') # GET bot token data from github environment
-GUILD = os.getenv('DISCORD_GUILD') # GET server name from data github environment
+load_dotenv() # call local independent variables
+TOKEN = os.getenv('DISCORD_TOKEN') # GET bot token data from environment
+GUILD = os.getenv('DISCORD_GUILD') # GET server name from data environment
 
 client = discord.Client(intents=discord.Intents.default())
 
 @client.event
-async def on_ready():
+async def on_ready(): # handle event when connection to discord is established
     for guild in client.guilds:
         if guild.name == GUILD:
             break
